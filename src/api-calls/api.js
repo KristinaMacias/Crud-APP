@@ -44,6 +44,17 @@ class API {
             console.log(error);
         }
     }
+    //delete request
+    delete = async (id) => {
+        try {
+            await fetch(`${url}/${id}`, {
+                method: "DELETE",
+            });
+        } catch (error) {
+            console.log(error);
+        }
+    }
 }
+
 
 export const api = new API();

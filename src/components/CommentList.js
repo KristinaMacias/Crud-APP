@@ -3,10 +3,15 @@ import Comment from "./Comment";
 
 const CommentList = ({ comments, setComments }) => {
 
+
     return (
         <div>
             {comments.map((comment) => (
-                <Comment comment={comment} key={comment.id} />
+                <Comment comment={comment}
+                    key={comment.id}
+                    setComments={setComments}
+                    comments={comments}
+                />
                 //map through comments and return a comment component for each comment with unique key
             ))}
 
