@@ -11,14 +11,14 @@ function App() {
   //hook to add new comment
   const [newComment, setNewComment] = useState({ name: "", comment: "" }); //newComment is an object and setNewComment is a function to update the state
 
-  //useEffect
+  //useEffect - I need this to run when the page loads to keep comments from the api
   useEffect(() => {
-    const getComments = async () => {
-      const commentsFromServer = await api.get();
-      setComments(commentsFromServer);
+    const getComments = async () => { //async function to get comments from api
+      const commentsFromServer = await api.get(); //get comments from api and store in variable
+      setComments(commentsFromServer); //update comments state with comments from api
     };
-    getComments();
-  }, []);
+    getComments(); //call function to get comments from api
+  }, []); //empty array as second argument to prevent infinite loop
 
 
   return (
