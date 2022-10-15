@@ -5,6 +5,7 @@ const CommentList = ({ comments, setComments }) => {
 
 
     return (
+        console.log("test", comments),
         <div>
             {comments.map((comment) => (
                 <Comment comment={comment}
