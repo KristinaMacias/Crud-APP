@@ -60,6 +60,7 @@ const Comment = ({ comment, comments, setComments }) => {
         <div>
             <h3>{comment.name}</h3>
             <p>{comment.comment}</p>
+            <hr></hr>
             <button onClick={handleDelete} style={{ backgroundColor: 'red' }}>Delete</button>
 
             {/* invoke and show button */}
