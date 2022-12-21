@@ -17,27 +17,18 @@ const Comment = ({ comment, comments, setComments }) => {
 
     };
 
-    //JAIR ____ function to hide edit button if not last comment
-    const hideEdit = () => {
-        if (comment.id === comments[comments.length - 1].id) { //if comment id is equal to last comment id
-            return true;
-        } else {
-            return false;
-        }
-    };
-
     //function to edit set edit to true
     const handleEdit = () => {
         setEdit(true);
     };
 
     //function to handle change in edit text
-    const handleChange = (e) => {
+    const handleEditChange = (e) => {
         setEditText(e.target.value);
     };
 
     //function to handle submit of edit to update comment in api and state
-    const handleSubmit = async (e) => {
+    const handleEditSubmit = async (e) => {
         e.preventDefault();
         //update comment in api
         await api.update(comment.id, { comment: editText }); //update comment in api with new text from edit text state
@@ -63,12 +54,10 @@ const Comment = ({ comment, comments, setComments }) => {
 
             <button onClick={handleDelete} style={{ backgroundColor: 'red' }}>Delete</button>
 
-            {/* invoke and show button */}
-            {hideEdit() && <button onClick={handleEdit} style={{ backgroundColor: 'yellow' }}>Edit</button>}
+            <button onClick={handleEdit} style={{ backgroundColor: 'yellow' }}>Edit</button>
 
-
-            {isEditing && <form onSubmit={handleSubmit}>
-                <input type="text" value={editText} onChange={handleChange} />
+            {isEditing && <form onSubmit={handleEditSubmit}>
+                <input type="text" value={editText} onChange={handleEditChange} />
                 <button type="submit">Submit</button>
             </form>}
 
